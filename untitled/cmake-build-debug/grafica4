@@ -1,0 +1,31 @@
+digraph ListaDobleCircular {
+	rankdir=LR;
+	"0x1ae776b8e70" [label="Vuelo: A100\nNúmero de Registro: N10001\nModelo: Boeing 737\nFabricante: Boeing\nAño de Fabricación: 2015\nCapacidad: 180\nPeso Máximo de Despegue: 79000\nAerolínea: AirlineX\nEstado: Mantenimiento"];
+	"0x1ae776b8e70" -> "0x1ae776b9140";
+	"0x1ae776b9140" -> "0x1ae776b8e70";
+	"0x1ae776b9140" [label="Vuelo: A101\nNúmero de Registro: N10002\nModelo: Airbus A320\nFabricante: Airbus\nAño de Fabricación: 2018\nCapacidad: 150\nPeso Máximo de Despegue: 77000\nAerolínea: AirlineY\nEstado: Mantenimiento"];
+	"0x1ae776b9140" -> "0x1ae776be8d0";
+	"0x1ae776be8d0" -> "0x1ae776b9140";
+	"0x1ae776be8d0" [label="Vuelo: A102\nNúmero de Registro: N10003\nModelo: Boeing 787\nFabricante: Boeing\nAño de Fabricación: 2020\nCapacidad: 242\nPeso Máximo de Despegue: 254000\nAerolínea: AirlineZ\nEstado: Mantenimiento"];
+	"0x1ae776be8d0" -> "0x1ae776be9c0";
+	"0x1ae776be9c0" -> "0x1ae776be8d0";
+	"0x1ae776be9c0" [label="Vuelo: A103\nNúmero de Registro: N10004\nModelo: Boeing 777\nFabricante: Boeing\nAño de Fabricación: 2012\nCapacidad: 396\nPeso Máximo de Despegue: 351000\nAerolínea: AirlineX\nEstado: Mantenimiento"];
+	"0x1ae776be9c0" -> "0x1ae776beab0";
+	"0x1ae776beab0" -> "0x1ae776be9c0";
+	"0x1ae776beab0" [label="Vuelo: A104\nNúmero de Registro: N10005\nModelo: Airbus A380\nFabricante: Airbus\nAño de Fabricación: 2010\nCapacidad: 853\nPeso Máximo de Despegue: 560000\nAerolínea: AirlineW\nEstado: Mantenimiento"];
+	"0x1ae776beab0" -> "0x1ae7774ec90";
+	"0x1ae7774ec90" -> "0x1ae776beab0";
+	"0x1ae7774ec90" [label="Vuelo: A125\nNúmero de Registro: N10026\nModelo: Airbus A380\nFabricante: Airbus\nAño de Fabricación: 2010\nCapacidad: 853\nPeso Máximo de Despegue: 560000\nAerolínea: AirlineW\nEstado: Mantenimiento"];
+	"0x1ae7774ec90" -> "0x1ae7774f320";
+	"0x1ae7774f320" -> "0x1ae7774ec90";
+	"0x1ae7774f320" [label="Vuelo: A126\nNúmero de Registro: N10027\nModelo: Boeing 737\nFabricante: Boeing\nAño de Fabricación: 2015\nCapacidad: 180\nPeso Máximo de Despegue: 79000\nAerolínea: AirlineX\nEstado: Mantenimiento"];
+	"0x1ae7774f320" -> "0x1ae7774ed80";
+	"0x1ae7774ed80" -> "0x1ae7774f320";
+	"0x1ae7774ed80" [label="Vuelo: A127\nNúmero de Registro: N10028\nModelo: Airbus A320\nFabricante: Airbus\nAño de Fabricación: 2018\nCapacidad: 150\nPeso Máximo de Despegue: 77000\nAerolínea: AirlineY\nEstado: Mantenimiento"];
+	"0x1ae7774ed80" -> "0x1ae7774ee70";
+	"0x1ae7774ee70" -> "0x1ae7774ed80";
+	"0x1ae7774ee70" [label="Vuelo: A128\nNúmero de Registro: N10029\nModelo: Boeing 787\nFabricante: Boeing\nAño de Fabricación: 2020\nCapacidad: 242\nPeso Máximo de Despegue: 254000\nAerolínea: AirlineZ\nEstado: Mantenimiento"];
+	"0x1ae7774ee70" -> "0x1ae7774e8d0";
+	"0x1ae7774e8d0" -> "0x1ae7774ee70";
+	"0x1ae7774e8d0" [label="Vuelo: A129\nNúmero de Registro: N10030\nModelo: Boeing 777\nFabricante: Boeing\nAño de Fabricación: 2012\nCapacidad: 396\nPeso Máximo de Despegue: 351000\nAerolínea: AirlineX\nEstado: Mantenimiento"];
+}

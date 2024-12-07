@@ -1,0 +1,16 @@
+# ninja log v6
+114	734	7552509074004049	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
+735	1180	7552509080205932	CLionProjects.exe	16546b44dbbfb48e
+30	375	7552548331553635	build.ninja	ecae20e949b52e44
+25	375	7552548332880555	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
+376	667	7552548336389987	CLionProjects.exe	16546b44dbbfb48e
+33	415	7552554245129517	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
+416	505	7552554248954919	CLionProjects.exe	16546b44dbbfb48e
+32	377	7552556198027654	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
+378	461	7552556201493683	CLionProjects.exe	16546b44dbbfb48e
+32	347	7552563836705911	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
+348	432	7552563839858164	CLionProjects.exe	16546b44dbbfb48e
+32	351	7552570214437182	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
+352	442	7552570217639130	CLionProjects.exe	16546b44dbbfb48e
+32	357	7552572491935713	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
+357	452	7552572495184162	CLionProjects.exe	16546b44dbbfb48e

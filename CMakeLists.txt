@@ -4,4 +4,5 @@ project(CLionProjects)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(CLionProjects main.cpp
-        matrizDispersa.h)
+        matrizDispersa.h
+        usuario.h)

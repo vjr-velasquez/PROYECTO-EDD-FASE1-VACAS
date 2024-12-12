@@ -27,7 +27,8 @@ void registroUsario() {
     cin >> departamento;
     cout << "Ingrese la empresa: ";
     cin >> empresa;
-    matriz.agregarElemento(empresa,departamento,nombreUsuario); // Estamos agregando a la matriz 
+    matriz.agregarNodo(empresa,departamento,Valor(nombreUsuario)); // Estamos agregando a la matriz
+    matriz.generarGraphviz("graficaUsers");
 }
 
 // Funcion para agrefar el menu del admin
@@ -92,10 +93,9 @@ void menuLogeo() {
 }
 
 
+// Función para agregar un activo
+void agregarActivo() {
 
-//Funcion para agregar archivos
-void agregarActivos() {
-    cout << "HOLAA INGRESE SU ARCHIVO" <<endl;
 }
 
 //Funcion para eliminar un activo
@@ -138,6 +138,8 @@ int main() {
             system("cls");
             menuLogeo();
 
+        }else {
+            break;
         }
     }
     return 0;

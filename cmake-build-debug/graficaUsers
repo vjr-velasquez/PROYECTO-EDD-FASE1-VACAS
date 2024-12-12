@@ -1,0 +1,27 @@
+digraph MatrizDispersa {
+    node [shape=box];
+    // Nodos de filas
+    fila_max [label="max", style=filled, fillcolor=lightblue, group=1];
+    columna_xela [label="xela", style=filled, fillcolor=lightgreen, group=2];
+    fila_eegsa [label="eegsa", style=filled, fillcolor=lightblue, group=1];
+    columna_chimal [label="chimal", style=filled, fillcolor=lightgreen, group=2];
+    // Nodos de valores
+    valor_max_xela [label="yoque", style=filled, fillcolor=yellow, group=2];
+    valor_eegsa_chimal [label="victor", style=filled, fillcolor=yellow, group=2];
+    // Conexiones de filas a valores
+    fila_max -> valor_max_xela [dir=none];
+    fila_eegsa -> valor_eegsa_chimal [dir=none];
+    // Conexiones de valores a columnas
+    valor_maxxela -> columnaxela [dir=none];
+    valor_eegsachimal -> columnachimal [dir=none];
+    { rank=same;
+    fila_eegsa
+    fila_max
+    }
+    { rank=same;
+    columna_chimal
+    columna_xela
+    valor_max_xela
+    valor_eegsa_chimal
+    }
+}

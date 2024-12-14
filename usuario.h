@@ -1,16 +1,27 @@
-//
-// Created by velas on 12/12/2024.
-//
-
 #ifndef USUARIO_H
 #define USUARIO_H
-#include <string>
 
-class usuario {
+#include <string>
+#include <iostream>
+#include "avl_tree.h"
+
+class Usuario {
 public:
     std::string user;
     std::string contra;
-    usuario()
+    ArbolAVL avl;
+
+    Usuario(const std::string& user = "", const std::string& contra = "", const ArbolAVL& avl = ArbolAVL())
+    : user(user), contra(contra), avl(avl) {}
+
+    std::string toString() const {
+        return "Usuario: " + user + ", Contraseña: " + contra;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Usuario& usuario) {
+        os << usuario.toString();
+        return os;
+    }
 };
 
 #endif //USUARIO_H

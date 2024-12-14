@@ -1,4 +1,4 @@
 # ninja log v6
-4	537	7556054433580419	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
-537	642	7556054438909442	CLionProjects.exe	16546b44dbbfb48e
-30	375	7557085017791014	build.ninja	ecae20e949b52e44
+33	402	7558654442323405	CMakeFiles/CLionProjects.dir/main.cpp.obj	24adfe4086e77d0
+402	481	7558654446015278	CLionProjects.exe	16546b44dbbfb48e
+30	375	7558656057420604	build.ninja	ecae20e949b52e44

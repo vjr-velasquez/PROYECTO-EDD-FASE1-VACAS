@@ -1,10 +1,8 @@
 #ifndef MATRIZDISPERSA_H
 #define MATRIZDISPERSA_H
 
-#pragma once
 #include <string>
 #include <fstream>
-#include <iostream>
 #include "usuario.h"
 
 struct NodoMatriz {
@@ -93,67 +91,127 @@ public:
         return false ;
     }
 
-    void generarGraphviz(const std::string& nombreArchivo) const {
-        std::ofstream archivo(nombreArchivo);
-        if (!archivo.is_open()) {
-            std::cerr << "Error al abrir el archivo para escritura." << std::endl;
-            return;
-        }
-
-        archivo << "digraph MatrizDispersa {\n";
-        archivo << "    node [shape=box];\n";
-
-        NodoMatriz* actualFila = cabeza->siguienteFila;
-        while (actualFila != nullptr) {
-            archivo << "    fila_" << actualFila->fila
-                    << " [label=\"" << actualFila->fila << "\", style=filled, fillcolor=lightblue];\n";
-            actualFila = actualFila->siguienteFila;
-        }
-
-        NodoMatriz* actualColumna = cabeza->siguienteColumna;
-        while (actualColumna != nullptr) {
-            archivo << "    columna_" << actualColumna->columna
-                    << " [label=\"" << actualColumna->columna << "\", style=filled, fillcolor=lightgreen];\n";
-            actualColumna = actualColumna->siguienteColumna;
-        }
-
-        NodoMatriz* actual = cabeza->siguienteFila;
-        while (actual != nullptr) {
-            NodoMatriz* nodoValor = actual->siguienteColumna;
-            while (nodoValor != nullptr) {
-                archivo << "    valor_" << nodoValor->fila << "_" << nodoValor->columna
-                        << " [label=\"" << nodoValor->valor.toString() << "\", style=filled, fillcolor=yellow];\n";
-                nodoValor = nodoValor->siguienteColumna;
+    void agregarActivo(const std::string& fila, const std::string& columna , const std::string& user, const std::string& id, const std::string& nombre, const std::string& descripcion, const int& dias) const {
+        NodoMatriz* nodoFila = buscarFila(fila);
+        if (nodoFila) {
+            NodoMatriz* actual = nodoFila->siguienteColumna;
+            while (actual != nullptr) {
+                if (actual->columna == columna) {
+                    if(actual->valor.user == user) {
+                        actual->valor.avl.insertar(Activos("",id,nombre,descripcion,dias,"disponible"));
+                        break;
+                    }
+                }
+                actual = actual->siguienteColumna;
             }
-            actual = actual->siguienteFila;
         }
-
-        actualFila = cabeza->siguienteFila;
-        while (actualFila != nullptr) {
-            NodoMatriz* nodoValor = actualFila->siguienteColumna;
-            while (nodoValor != nullptr) {
-                archivo << "    fila_" << actualFila->fila << " -> valor_" << nodoValor->fila << "_" << nodoValor->columna
-                        << " [dir=none];\n";
-                nodoValor = nodoValor->siguienteColumna;
-            }
-            actualFila = actualFila->siguienteFila;
-        }
-
-        actualColumna = cabeza->siguienteColumna;
-        while (actualColumna != nullptr) {
-            NodoMatriz* nodoValor = actualColumna->siguienteFila;
-            while (nodoValor != nullptr) {
-                archivo << "    valor_" << nodoValor->fila << "" << nodoValor->columna << " -> columna" << actualColumna->columna
-                        << " [dir=none];\n";
-                nodoValor = nodoValor->siguienteFila;
-            }
-            actualColumna = actualColumna->siguienteColumna;
-        }
-
-        archivo << "}\n";
-        archivo.close();
-        std::cout << "Archivo Graphviz generado: " << nombreArchivo << std::endl;
     }
+
+    void buscarEliminarActivo(const std::string& fila, const std::string& columna , const std::string& user, const std::string& id) const {
+        NodoMatriz* nodoFila = buscarFila(fila);
+        if (nodoFila) {
+            NodoMatriz* actual = nodoFila->siguienteColumna;
+            while (actual != nullptr) {
+                if (actual->columna == columna) {
+                    if(actual->valor.user == user) {
+                        actual->valor.avl.eliminar(id);
+                        break;
+                    }
+                }
+                actual = actual->siguienteColumna;
+            }
+        }
+    }
+
+    void modificarActivo(const std::string& fila, const std::string& columna , const std::string& user, const std::string& id, const std::string& desc) const {
+        NodoMatriz* nodoFila = buscarFila(fila);
+        if (nodoFila) {
+            NodoMatriz* actual = nodoFila->siguienteColumna;
+            while (actual != nullptr) {
+                if (actual->columna == columna) {
+                    if(actual->valor.user == user) {
+                        actual->valor.avl.modificarDescripcion(id,desc);
+                        break;
+                    }
+                }
+                actual = actual->siguienteColumna;
+            }
+        }
+    }
+
+    void rentarActivo(const std::string& user, const std::string& id, const std::string& estado, const int dias) const {
+        NodoMatriz* filaActual = cabeza->siguienteFila;
+        while (filaActual != nullptr) {
+            NodoMatriz* columnaActual = filaActual->siguienteColumna;
+            while (columnaActual != nullptr) {
+                columnaActual->valor.avl.rentarActivo(user,id, estado, dias);
+                columnaActual = columnaActual->siguienteColumna;
+            }
+            filaActual = filaActual->siguienteFila;
+        }
+    }
+
+    void mostarActivo(const std::string& fila, const std::string& columna, const std::string& user, const std::string& es) const {
+        NodoMatriz* nodoFila = buscarFila(fila);
+        if (nodoFila) {
+            NodoMatriz* actual = nodoFila->siguienteColumna;
+            while (actual != nullptr) {
+                if (actual->columna == columna) {
+                    if(actual->valor.user == user) {
+                        if(es == "rentado") {
+                            actual->valor.avl.enOrdenRentado();
+                            break;
+                        }
+                        if(es == "todo") {
+                            std::cout << "modificando......";
+                            actual->valor.avl.mostrarActivosEliminar();
+                            break;
+                        }
+                    }
+                }
+                actual = actual->siguienteColumna;
+            }
+        }
+    }
+
+    void devolverActivo(const std::string& id) const {
+        NodoMatriz* filaActual = cabeza->siguienteFila;
+        while (filaActual != nullptr) {
+            NodoMatriz* columnaActual = filaActual->siguienteColumna;
+            while (columnaActual != nullptr) {
+                columnaActual->valor.avl.devolverActivo(id);
+                columnaActual = columnaActual->siguienteColumna;
+            }
+            filaActual = filaActual->siguienteFila;
+        }
+    }
+
+    void mostarActivoRentados(const std::string& user) const {
+        NodoMatriz* filaActual = cabeza->siguienteFila;
+        while (filaActual != nullptr) {
+            NodoMatriz* columnaActual = filaActual->siguienteColumna;
+            while (columnaActual != nullptr) {
+                columnaActual->valor.avl.mostrarActivos(user);
+                columnaActual = columnaActual->siguienteColumna;
+            }
+            filaActual = filaActual->siguienteFila;
+        }
+    }
+
+    void mostrarActivos(const std::string& user) const {
+        NodoMatriz* filaActual = cabeza->siguienteFila;
+        while (filaActual != nullptr) {
+            NodoMatriz* columnaActual = filaActual->siguienteColumna;
+            while (columnaActual != nullptr) {
+                if(columnaActual->valor.user != user) {
+                    columnaActual->valor.avl.enOrden();
+                }
+                columnaActual = columnaActual->siguienteColumna;
+            }
+            filaActual = filaActual->siguienteFila;
+        }
+    }
+
 };
 
 #endif //MATRIZDISPERSA_H

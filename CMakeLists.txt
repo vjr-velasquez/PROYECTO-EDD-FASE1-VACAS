@@ -7,4 +7,6 @@ add_executable(CLionProjects main.cpp
         matrizDispersa.h
         usuario.h
         avl_tree.h
-        activos.h)
+        activos.h
+        listaDobleCircular.h
+        datosTransaccion.h)
